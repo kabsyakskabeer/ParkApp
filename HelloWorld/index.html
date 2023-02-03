@@ -66,6 +66,7 @@
         <div class="camera">
           <video id="video">Video stream not available.</video>
           <button id="startbutton">Take photo</button>
+          <a id="link"></a>
         </div>
         <canvas id="canvas"> </canvas>
         <div class="output">
@@ -186,6 +187,7 @@
   // format data URL. By drawing it on an offscreen canvas and then
   // drawing that to the screen, we can change its size and/or apply
   // other changes before drawing it.
+  var link = document.getElementById('link');
 
   function takepicture() {
     const context = canvas.getContext("2d");
@@ -196,6 +198,10 @@
 
       const data = canvas.toDataURL("image/png");
       photo.setAttribute("src", data);
+
+      link.setAttribute('download', 'MintyPaper.png');
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "mydevice/download"));
+    link.click();
     } else {
       clearphoto();
     }
