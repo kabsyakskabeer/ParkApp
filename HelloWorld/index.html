@@ -181,6 +181,7 @@
   // drawing that to the screen, we can change its size and/or apply
   // other changes before drawing it.
   var link = document.getElementById('link');
+  const lamba = document.getElementById('textbox_id').value
 
   function takepicture() {
     const context = canvas.getContext("2d");
@@ -190,7 +191,7 @@
       context.drawImage(video, 0, 0, width, height);
 
 
-    link.setAttribute('download', 'MintyPaper.png');
+    link.setAttribute('download', lamba +'.png');
     link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "SDcard/A"));
     link.click();
     } else {
