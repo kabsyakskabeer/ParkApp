@@ -77,15 +77,28 @@
     </div>
     
  <script>
-  if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("serviceworker.js")
-.then(function(registration) {
-console.log("Service Worker registered with scope:", registration.scope);
-}).catch(function(err) {
-console.log("Service worker registration failed:", err);
-});
-}
-
+const registerServiceWorker = async () => {
+  if ('serviceWorker' in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register(
+        'serviceworker.js',
+        {
+          scope: './',
+        }
+      );
+      if (registration.installing) {
+        console.log('Service worker installing');
+      } else if (registration.waiting) {
+        console.log('Service worker installed');
+      } else if (registration.active) {
+        console.log('Service worker active');
+      }
+    } catch (error) {
+      console.error(`Registration failed with ${error}`);
+    }
+  }
+};
+registerServiceWorker();
 
 
 
