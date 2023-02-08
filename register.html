@@ -70,6 +70,11 @@ overflow: hidden;
   height: 100%;
   width: 100%;
 }
+#bButton{
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
 
     </style>
 </head>
@@ -80,7 +85,7 @@ overflow: hidden;
           <video id="video">Video stream not available.</video>
           <button id="startbutton">Take photo</button>
           <input type="number" id="numberInput"></input>
-          <button onclick="window.location.href='/ParkApp/';">back</button>
+          <button onclick="window.location.href='/ParkApp/';" id ="bButton">back</button>
           <a id="link"></a>
         </div>
         <canvas id="canvas"> </canvas>
